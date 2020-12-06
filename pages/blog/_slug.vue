@@ -4,13 +4,13 @@
     <small class="date">{{ post.date | dateformat }}</small>
     <section v-html="post.content.rendered"></section>
     <div class="footer-nav">
-      <div class="nav-item next">
+      <div v-if="post.next !== null" class="nav-item next">
         <p class="next-item-title">
           <strong>Next:</strong>
         </p>
         <p><a :href="post.next.link">{{ post.next.title }}</a></p>
       </div>
-      <div class="nav-item previous">
+      <div v-if="post.previous !== null" class="nav-item previous">
         <p class="previous-item-title">
           <strong>Previous</strong>
         </p>

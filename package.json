@@ -1,9 +1,8 @@
 {
   "name": "wp-nuxt",
   "version": "1.0.0",
-  "description": "Headless WordPress with Nuxt",
-  "author": "geoffgraham and sdras",
-  "private": true,
+  "description": "The publishing project",
+  "author": "Carlos Araya <carlos.araya@gmail.com>",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",

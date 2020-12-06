@@ -66,7 +66,6 @@ export const actions = {
           tags,
           content
         }))
-      console.log(pages[0]);
       commit("updatePages", pages)
     } catch (err) {
       console.log(err)
