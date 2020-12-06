@@ -10,9 +10,9 @@ export const mutations = {
   updatePosts: (state, posts) => {
     state.posts = posts
   },
-  // updatePages: (state, pages) => {
-  //   state.pages = pages
-  // },
+  updatePages: (state, pages) => {
+    state.pages = pages
+  },
   updateTags: (state, tags) => {
     state.tags = tags
   }
@@ -29,9 +29,8 @@ export const actions = {
 
       posts = posts
         // keep only published posts
-        // also remove previous and next if they are null or empty
-        // TODO: Figure out if theres a more elegant way to do this
-        .filter(el => el.status === "publish" && el.next !== null && el.previous !== null)
+        // NOTE: Moved the logic of empty post nav links to blog/_slug.vue
+        .filter(el => el.status === "publish")
         .map(({ id, slug, title, excerpt, date, tags, content, previous, next }) => ({
           id,
           slug,
@@ -48,31 +47,31 @@ export const actions = {
       console.log(err)
     }
   },
-  // async getPages({ state, commit, dispatch }) {
-  //   if (state.pages.length) return
+  async getPages({ state, commit, dispatch }) {
+    if (state.pages.length) return
   
-  //   try {
-  //     let pages = await fetch(
-  //       `${siteURL}/wp-json/wp/v2/pages?page=1&per_page=10`
-  //     ).then(res => res.json())
+    try {
+      let pages = await fetch(
+        `${siteURL}/wp-json/wp/v2/pages?page=1&per_page=10`
+      ).then(res => res.json())
   
-  //     pages = pages
-  //       .filter(el => el.status === "publish")
-  //       .map(({ id, slug, title, excerpt, date, tags, content }) => ({
-  //         id,
-  //         slug,
-  //         title,
-  //         excerpt,
-  //         date,
-  //         tags,
-  //         content
-  //       }))
-  //     console.log(pages[0]);
-  //     commit("updatePages", pages)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // },
+      pages = pages
+        .filter(el => el.status === "publish")
+        .map(({ id, slug, title, excerpt, date, tags, content }) => ({
+          id,
+          slug,
+          title,
+          excerpt,
+          date,
+          tags,
+          content
+        }))
+      console.log(pages[0]);
+      commit("updatePages", pages)
+    } catch (err) {
+      console.log(err)
+    }
+  },
   async getTags({ state, commit }) {
     if (state.tags.length) return
 

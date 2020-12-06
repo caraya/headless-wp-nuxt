@@ -7,7 +7,10 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/about">About</nuxt-link>
+        <nuxt-link to="/blog-pages/about-the-publishing-project">About</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/blog-pages/privacy">Privacy</nuxt-link>
       </li>
     </ul>
   </div>

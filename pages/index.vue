@@ -49,6 +49,9 @@ export default {
     posts() {
       return this.$store.state.posts;
     },
+    pages() {
+      return this.$store.state.pages;
+    },
     tags() {
       return this.$store.state.tags;
     },

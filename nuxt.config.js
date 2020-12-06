@@ -5,7 +5,10 @@ let dynamicRoutes = () => {
     .then(res => {
       return res.data.map(post => `/blog/${post.slug}`)
     })
-  console.log(routes)
+    .get("https://publishing-project.rivendellweb.net/wp-json/wp/v2/pages?page=1&per_page=10")
+    .then(res => {
+      return res.data.map(pages => `/blog-pages/${page.slug}`)
+    })
   return routes
 }
 
@@ -47,6 +50,7 @@ export default {
    */
   plugins: [
     "~/plugins/posts.server.js",
+    "~/plugins/pages.server.js",
     "~/plugins/tags.server.js",
     "~/plugins/dateformat.js"
   ],
